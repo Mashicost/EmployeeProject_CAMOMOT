@@ -8,7 +8,7 @@ public class MyDate {
     }
 
     private int date;
-    private Month month; // Changed from int to Month enum
+    private Month month;
     private int year;
 
     public int getDate() {
@@ -24,7 +24,7 @@ public class MyDate {
         return month;
     }
 
-    // Setter now accepts Month enum
+
     public void setMonth(Month month) {
         this.month = month;
     }

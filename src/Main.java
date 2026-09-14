@@ -2,22 +2,28 @@ import version2.*;
 
 public class Main {
     public static void main(String[] args) {
-        // Instantiate and set up Name
-        Name guy = new Name();
-        guy.setFirstName("Kiril");
-        guy.setMiddleName("Belotindos");
-        guy.setLastName("Camomot");
+
+        System.out.println("Empty Construct");
+        HourlyEmployee emp1 = new HourlyEmployee();
+        emp1.displayHourlyEmployee(); //Empty construct
 
 
-        MyDate today = new MyDate();
-        today.setDate(14);
-        today.setMonth(MyDate.Month.SEPTEMBER);
-        today.setYear(2026);
+        System.out.println("Partial Construct");
+
+        HourlyEmployee emp2 = new HourlyEmployee(101, "John", "Danger", "Doe");
+
+        emp2.setTotalHoursWorked(45.0f);
+        emp2.setRatePerHour(20.0);
+        emp2.displayHourlyEmployee();
 
 
-        System.out.println(guy);
+        System.out.println("Full Construct");
+        Name bossName = new Name();
+        bossName.setFirstName("Jane");
+        bossName.setMiddleName("Marie");
+        bossName.setLastName("Smith");
 
-        System.out.println(today);
-
+        HourlyEmployee emp3 = new HourlyEmployee(102, bossName, 40.0f, 35.50);
+        emp3.displayHourlyEmployee();
     }
 }

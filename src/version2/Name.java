@@ -2,7 +2,6 @@ package version2;
 
 public class Name {
 
-
     String firstName;
     String middleName;
     String lastName;
