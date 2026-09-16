@@ -3,38 +3,31 @@ package version2;
 public class HourlyEmployee {
 
     private int empID;
-    private Name empName; // Utilizes the Name class object
+    private Name empName;
+    private MyDate empDate;
     private float totalHoursWorked;
     private double ratePerHour;
 
-    // Empty Constructor
     public HourlyEmployee() {
         this.empID = 0;
-        // Instantiating the object first prevents NullPointerException
-        this.empName = new Name();
-        this.empName.setFirstName("N/A");
-        this.empName.setMiddleName("N/A");
-        this.empName.setLastName("N/A");
-
+        this.empName = new Name("N/A", "N/A", "N/A");
+        this.empDate = new MyDate(1, MyDate.Month.JANUARY, 2000);
         this.totalHoursWorked = 0;
         this.ratePerHour = 0;
     }
 
-    // Partial Constructor (Accepts individual string components for Name)
-    public HourlyEmployee(int empID, String firstName, String middleName, String lastName) {
+    public HourlyEmployee(int empID, Name empName, MyDate empDate) {
         this.empID = empID;
-        this.empName = new Name();
-        this.empName.setFirstName(firstName);
-        this.empName.setMiddleName(middleName);
-        this.empName.setLastName(lastName);
+        this.empName = empName;
+        this.empDate = empDate;
         this.totalHoursWorked = 0;
         this.ratePerHour = 0;
     }
 
-    // Full Constructor (Accepts a pre-built Name object)
-    public HourlyEmployee(int empID, Name empName, float totalHoursWorked, double ratePerHour) {
+    public HourlyEmployee(int empID, Name empName, MyDate empDate, float totalHoursWorked, double ratePerHour) {
         this.empID = empID;
-        this.empName = empName; // Assigns the Name object reference directly
+        this.empName = empName;
+        this.empDate = empDate;
         this.totalHoursWorked = totalHoursWorked;
         this.ratePerHour = ratePerHour;
     }
@@ -47,14 +40,20 @@ public class HourlyEmployee {
         this.empID = empID;
     }
 
-    // Getter now returns the Name object
     public Name getEmpName() {
         return empName;
     }
 
-    // Setter now accepts a Name object
     public void setEmpName(Name empName) {
         this.empName = empName;
+    }
+
+    public MyDate getEmpDate() {
+        return empDate;
+    }
+
+    public void setEmpDate(MyDate empDate) {
+        this.empDate = empDate;
     }
 
     public float getTotalHoursWorked() {
@@ -93,9 +92,10 @@ public class HourlyEmployee {
     @Override
     public String toString() {
         return String.format(
-                "HourlyEmployee [ID: %d, %s, Hours: %.2f, Rate: $%.2f, Total Salary: $%,.2f]",
+                "HourlyEmployee [ID: %d, Name: %s, %s, Hours: %.2f, Rate: ₱%,.2f, Total Salary: ₱%,.2f]",
                 empID,
-                empName, // This will automatically call your Name class's custom toString()
+                empName,
+                empDate,
                 totalHoursWorked,
                 ratePerHour,
                 computeSalary()

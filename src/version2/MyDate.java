@@ -11,6 +11,20 @@ public class MyDate {
     private Month month;
     private int year;
 
+    // Default Constructor
+    public MyDate() {
+        this.date = 1;
+        this.month = Month.JANUARY;
+        this.year = 2000;
+    }
+
+    // Full Constructor
+    public MyDate(int date, Month month, int year) {
+        this.date = date;
+        this.month = month;
+        this.year = year;
+    }
+
     public int getDate() {
         return date;
     }
@@ -19,11 +33,9 @@ public class MyDate {
         this.date = date;
     }
 
-
     public Month getMonth() {
         return month;
     }
-
 
     public void setMonth(Month month) {
         this.month = month;
@@ -41,6 +53,4 @@ public class MyDate {
     public String toString() {
         return "Date: " + date + " " + month + " " + year;
     }
-
-
 }

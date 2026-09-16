@@ -2,10 +2,23 @@ package version2;
 
 public class Name {
 
-    String firstName;
-    String middleName;
-    String lastName;
+    private String firstName;
+    private String middleName;
+    private String lastName;
 
+    // Empty Constructor
+    public Name() {
+        this.firstName = "N/A";
+        this.middleName = "N/A";
+        this.lastName = "N/A";
+    }
+
+    // Full Constructor
+    public Name(String firstName, String middleName, String lastName) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+    }
     public String getFirstName() {
         return firstName;
     }
@@ -32,7 +45,11 @@ public class Name {
 
     @Override
     public String toString() {
-        return "Oi your name is: " + firstName + " " +  middleName.charAt(0)+ "." + " " + lastName;
+        return "Name{" +
+                "firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 
 }
