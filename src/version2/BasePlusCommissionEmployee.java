@@ -1,42 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package version2;
+package version2
+        ;
 
 public class BasePlusCommissionEmployee {
 
     private int empID;
-    private String empName;
+    private Name empName;
+    private MyDate empDate;
     private double totalSale;
     private double baseSalary;
 
-    // Empty Construct
     public BasePlusCommissionEmployee() {
         this.empID = 0;
-        this.empName = "N/A";
+        this.empName = new Name("N/A", "N/A", "N/A");
+        this.empDate = new MyDate(1, MyDate.Month.JANUARY, 2000);
         this.totalSale = 0;
         this.baseSalary = 0;
     }
 
-    // Partial Construct
-    public BasePlusCommissionEmployee(int empID, String empName) {
+    public BasePlusCommissionEmployee(int empID, Name empName, MyDate empDate) {
         this.empID = empID;
         this.empName = empName;
+        this.empDate = empDate;
         this.totalSale = 0;
         this.baseSalary = 0;
     }
 
-    // Full Construct
-    public BasePlusCommissionEmployee(int empID, String empName,
+    public BasePlusCommissionEmployee(int empID, Name empName, MyDate empDate,
                                       double totalSale, double baseSalary) {
         this.empID = empID;
         this.empName = empName;
+        this.empDate = empDate;
         this.totalSale = totalSale;
         this.baseSalary = baseSalary;
     }
 
-    // Getters and Setters
     public int getEmpID() {
         return empID;
     }
@@ -45,12 +42,20 @@ public class BasePlusCommissionEmployee {
         this.empID = empID;
     }
 
-    public String getEmpName() {
+    public Name getEmpName() {
         return empName;
     }
 
-    public void setEmpName(String empName) {
+    public void setEmpName(Name empName) {
         this.empName = empName;
+    }
+
+    public MyDate getEmpDate() {
+        return empDate;
+    }
+
+    public void setEmpDate(MyDate empDate) {
+        this.empDate = empDate;
     }
 
     public double getTotalSale() {
@@ -58,9 +63,7 @@ public class BasePlusCommissionEmployee {
     }
 
     public void setTotalSale(double totalSale) {
-        if (totalSale >= 0) {
-            this.totalSale = totalSale;
-        }
+        this.totalSale = totalSale;
     }
 
     public double getBaseSalary() {
@@ -68,14 +71,10 @@ public class BasePlusCommissionEmployee {
     }
 
     public void setBaseSalary(double baseSalary) {
-        if (baseSalary >= 0) {
-            this.baseSalary = baseSalary;
-        }
+        this.baseSalary = baseSalary;
     }
 
-    // Compute Salary
     public double computeSalary() {
-
         double commissionRate;
 
         if (totalSale < 50000) {
@@ -93,15 +92,12 @@ public class BasePlusCommissionEmployee {
         return baseSalary + commission;
     }
 
-    // Display Employee
     public void displayBasePlusCommissionEmployee() {
         System.out.println(this.toString());
     }
 
-    // String Representation
     @Override
     public String toString() {
-
         double commissionRate;
 
         if (totalSale < 50000) {
@@ -115,9 +111,10 @@ public class BasePlusCommissionEmployee {
         }
 
         return String.format(
-                "BasePlusCommissionEmployee [ID: %d, Name: %s, Sales: ₱%,.2f, Base Salary: ₱%,.2f, Commission Rate: %.0f%%, Total Salary: ₱%,.2f]",
+                "BasePlusCommissionEmployee [ID: %d, Name: %s, %s, Sales: ₱%,.2f, Base Salary: ₱%,.2f, Commission Rate: %.0f%%, Total Salary: ₱%,.2f]",
                 empID,
                 empName,
+                empDate,
                 totalSale,
                 baseSalary,
                 commissionRate * 100,
