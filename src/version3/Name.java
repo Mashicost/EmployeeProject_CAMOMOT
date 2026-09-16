@@ -5,12 +5,28 @@ public class Name {
     private String firstName;
     private String middleName;
     private String lastName;
+    private String suffix;
 
-    // Empty Constructor
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
+
+    /*
+    // Empty Constructor (Does not actually need this as everything will NULL regardless)
     public Name() {
         this.firstName = "N/A";
         this.middleName = "N/A";
         this.lastName = "N/A";
+    }
+    */
+
+    public Name(){
+
+
     }
 
     // Full Constructor
