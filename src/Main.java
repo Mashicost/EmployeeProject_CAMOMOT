@@ -1,32 +1,56 @@
-import version2.*;
+import version3.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Empty Construct");
-        HourlyEmployee emp1 = new HourlyEmployee();
-        emp1.displayHourlyEmployee();
+        // Empty Constructor
+        PieceWorkerEmployee emp1 = new PieceWorkerEmployee();
+        System.out.println(emp1);
 
-        System.out.println("\nPartial Construct");
+
+        // Partial Constructor
+
+
         Name emp2Name = new Name("John", "Danger", "Doe");
         MyDate emp2Date = new MyDate(15, MyDate.Month.MARCH, 1995);
-        HourlyEmployee emp2 = new HourlyEmployee(101, emp2Name, emp2Date);
 
-        emp2.setTotalHoursWorked(45.0f);
-        emp2.setRatePerHour(20.0);
-        emp2.displayHourlyEmployee();
+        PieceWorkerEmployee emp2 =
+                new PieceWorkerEmployee(101, emp2Name, emp2Date);
 
-        System.out.println("\nFull Construct");
-        Name bossName = new Name("Jane", "Marie", "Smith");
-        MyDate bossDate = new MyDate(22, MyDate.Month.OCTOBER, 1988);
+        emp2.setTotalPiecesFinished(250);
+        emp2.setRatePerPiece(20.0);
 
-        HourlyEmployee emp3 = new HourlyEmployee(102, bossName, bossDate, 40.0f, 35.50);
-        emp3.displayHourlyEmployee();
+        System.out.println(emp2);
 
-        System.out.println("\nCommission Employee Testing");
-        Name commName = new Name("Alice", "Grace", "Brown");
-        MyDate commDate = new MyDate(5, MyDate.Month.DECEMBER, 1992);
-        CommissionEmployee emp4 = new CommissionEmployee(201, commName, commDate, 120000.00);
-        emp4.displayCommissionEmployee();
+        // Full Constructor
+
+        Name emp3Name = new Name("Jane", "Marie", "Smith");
+        MyDate emp3Date = new MyDate(22, MyDate.Month.OCTOBER, 1988);
+
+        PieceWorkerEmployee emp3 =
+                new PieceWorkerEmployee(
+                        102,
+                        emp3Name,
+                        emp3Date,
+                        350,
+                        25.50
+                );
+
+        System.out.println(emp3);
+
+
+        // Getters and Setters
+        emp3.setEmpID(999);
+        emp3.setTotalPiecesFinished(500);
+        emp3.setRatePerPiece(30.0);
+
+        System.out.println(emp3);
+
+
+        // Polymorphism
+        Employee employee = emp3;
+
+        System.out.println(employee);
+        System.out.println("Salary: " + employee.computeSalary());
     }
 }

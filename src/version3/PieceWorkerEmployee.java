@@ -1,60 +1,29 @@
 package version3;
 
-public class PieceWorkerEmployee {
+public class PieceWorkerEmployee extends Employee{
 
-    private int empID;
-    private Name empName;
-    private MyDate empDate;
     private int totalPiecesFinished;
     private double ratePerPiece;
 
     public PieceWorkerEmployee() {
-        this.empID = 0;
-        this.empName = new Name("N/A", "N/A", "N/A");
-        this.empDate = new MyDate(1, MyDate.Month.JANUARY, 2000);
+        super();
         this.totalPiecesFinished = 0;
         this.ratePerPiece = 0;
     }
 
     public PieceWorkerEmployee(int empID, Name empName, MyDate empDate) {
-        this.empID = empID;
-        this.empName = empName;
-        this.empDate = empDate;
+        super(empID, empName, empDate);
+
         this.totalPiecesFinished = 0;
         this.ratePerPiece = 0;
     }
 
     public PieceWorkerEmployee(int empID, Name empName, MyDate empDate,
                                int totalPiecesFinished, double ratePerPiece) {
-        this.empID = empID;
-        this.empName = empName;
-        this.empDate = empDate;
+        super(empID, empName, empDate);
+
         this.totalPiecesFinished = totalPiecesFinished;
         this.ratePerPiece = ratePerPiece;
-    }
-
-    public int getEmpID() {
-        return empID;
-    }
-
-    public void setEmpID(int empID) {
-        this.empID = empID;
-    }
-
-    public Name getEmpName() {
-        return empName;
-    }
-
-    public void setEmpName(Name empName) {
-        this.empName = empName;
-    }
-
-    public MyDate getEmpDate() {
-        return empDate;
-    }
-
-    public void setEmpDate(MyDate empDate) {
-        this.empDate = empDate;
     }
 
     public int getTotalPiecesFinished() {
@@ -73,6 +42,7 @@ public class PieceWorkerEmployee {
         this.ratePerPiece = ratePerPiece;
     }
 
+    @Override
     public double computeSalary() {
         double basePay = totalPiecesFinished * ratePerPiece;
 
@@ -83,20 +53,15 @@ public class PieceWorkerEmployee {
         return basePay + bonusPay;
     }
 
-    public void displayPieceWorkerEmployee() {
-        System.out.println(this.toString());
+    public String toString() {
+        return "PieceWorkerEmployee{" +
+                super.toString() +
+                "totalPiecesFinished=" + totalPiecesFinished +
+                ", ratePerPiece=" + ratePerPiece + "salary=" + computeSalary() +
+                '}';
+
     }
 
-    @Override
-    public String toString() {
-        return String.format(
-                "PieceWorkerEmployee [ID: %d, Name: %s, %s, Pieces: %d, Rate: ₱%.2f, Total Salary: ₱%,.2f]",
-                empID,
-                empName,
-                empDate,
-                totalPiecesFinished,
-                ratePerPiece,
-                computeSalary()
-        );
-    }
+
+
 }
